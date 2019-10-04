@@ -15,7 +15,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   const source = fileNode && fileNode.sourceInstanceName;
 
   // ///////////////// Utility functions ///////////////////
-
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   function slugify(string) {
     return string
       .toLowerCase()
@@ -35,6 +35,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
     };
 
     const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, match => {
+      // eslint-disable-next-line unicorn/prefer-string-slice
       const key = match.substr(1);
       if (permalinkData.hasOwnProperty(key)) {
         return permalinkData[key];
@@ -48,7 +49,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
 
     return permalink;
   }
-
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   function generateSlug(...arguments_) {
     return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/');
   }
